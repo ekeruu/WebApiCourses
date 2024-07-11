@@ -20,6 +20,9 @@ namespace WebApiCourses
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddControllersWithViews();
+
             services.AddDbContext<WebApiCoursesContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -30,12 +33,45 @@ namespace WebApiCourses
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            /* if (env.IsDevelopment())
+             {
+                 app.UseDeveloperExceptionPage();
+             }
+             else
+             {
+                 app.UseExceptionHandler("/Home/Error");
+                 app.UseHsts();
+             }
+
+             app.UseHttpsRedirection();
+
+             app.UseRouting();
+
+             app.UseAuthorization();
+
+
+
+             app.UseStaticFiles(); 
+
+
+             app.UseEndpoints(endpoints =>
+             {
+                 endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller=Home}/{action=Index}/{id?}");
+             });*/
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles(); // Для обслуживания статических файлов из wwwroot
 
             app.UseRouting();
 
@@ -43,7 +79,10 @@ namespace WebApiCourses
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers(); // Если используется API контроллеры
+                endpoints.MapDefaultControllerRoute(); // Для MVC контроллеров
+
+                endpoints.MapFallbackToFile("html/index.html");
             });
         }
     }

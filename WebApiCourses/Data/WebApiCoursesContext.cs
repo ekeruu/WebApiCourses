@@ -17,7 +17,7 @@ namespace WebApiCourses.Data
         public DbSet<Specialty> Specialty { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<Teacher> Teacher { get; set; }
-        public DbSet<CourseSchedule> CourseSchedule { get; set; }
+        public DbSet<CourseShedule> CourseShedule { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

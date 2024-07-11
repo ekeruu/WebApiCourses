@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApiCourses.Models.CourseSchedule>
+﻿@model IEnumerable<WebApiCourses.Models.CourseShedule>
 
 @{
     ViewData["Title"] = "Index";
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Hours)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CourseScheduleID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CourseScheduleID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CourseScheduleID">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.CourseSheduleID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CourseSheduleID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CourseSheduleID">Delete</a>
             </td>
         </tr>
 }

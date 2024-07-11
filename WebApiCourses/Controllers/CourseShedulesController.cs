@@ -22,23 +22,23 @@ namespace WebApiCourses.Controllers
 
         // GET: Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CourseSchedule>>> GetCourseShedule()
+        public async Task<ActionResult<IEnumerable<CourseShedule>>> GetCourseShedule()
         {
-            return await _context.CourseSchedule.ToListAsync();
+            return await _context.CourseShedule.ToListAsync();
         }
 
         // GET: Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CourseSchedule>> GetCourseShedule(int id)
+        public async Task<ActionResult<CourseShedule>> GetCourseShedule(int id)
         {
-            var courseSchedules = await _context.CourseSchedule.FindAsync(id);
+            var courseShedule = await _context.CourseShedule.FindAsync(id);
 
-            if (courseSchedules == null)
+            if (courseShedule == null)
             {
                 return NotFound();
             }
 
-            return courseSchedules;
+            return courseShedule;
         }
 
     }
