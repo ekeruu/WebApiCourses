@@ -1,7 +1,10 @@
-﻿namespace WebApiCourses.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApiCourses.Models
 {
     public class CourseSchedule
     {
+        [Key]
         public int CourseScheduleID { get; set; }
         public int CourseID { get; set; }
         public int GroupID { get; set; }

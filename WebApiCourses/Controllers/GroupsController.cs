@@ -24,14 +24,14 @@ namespace WebApiCourses.Controllers
 
         // GET: Groups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Group>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<Group>>> GetGroup()
         {
             return await _context.Group.ToListAsync();
         }
 
         // GET: Groups/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Group>> GetStudent(int id)
+        public async Task<ActionResult<Group>> GetGroup(int id)
         {
             var group = await _context.Group.FindAsync(id);
 

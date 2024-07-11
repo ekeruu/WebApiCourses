@@ -22,6 +22,7 @@ namespace WebApiCourses
         {
             services.AddDbContext<WebApiCoursesContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
            
             services.AddControllers();
         }

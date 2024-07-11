@@ -13,11 +13,11 @@ namespace WebApiCourses.Data
 
         public DbSet<Students> Students { get; set; }
         public DbSet<Group> Group { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Specialty> Specialties { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<CourseSchedule> CourseSchedules { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Specialty> Specialty { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<CourseSchedule> CourseSchedule { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
