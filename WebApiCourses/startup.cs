@@ -33,33 +33,6 @@ namespace WebApiCourses
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            /* if (env.IsDevelopment())
-             {
-                 app.UseDeveloperExceptionPage();
-             }
-             else
-             {
-                 app.UseExceptionHandler("/Home/Error");
-                 app.UseHsts();
-             }
-
-             app.UseHttpsRedirection();
-
-             app.UseRouting();
-
-             app.UseAuthorization();
-
-
-
-             app.UseStaticFiles(); 
-
-
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllerRoute(
-                     name: "default",
-                     pattern: "{controller=Home}/{action=Index}/{id?}");
-             });*/
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -71,7 +44,7 @@ namespace WebApiCourses
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles(); // Для обслуживания статических файлов из wwwroot
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -79,11 +52,14 @@ namespace WebApiCourses
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // Если используется API контроллеры
-                endpoints.MapDefaultControllerRoute(); // Для MVC контроллеров
-
-                endpoints.MapFallbackToFile("html/index.html");
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapFallbackToController("Index", "Home");
             });
         }
+
+
     }
 }
