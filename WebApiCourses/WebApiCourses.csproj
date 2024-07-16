@@ -7,21 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="react-app\.gitignore" />
-    <Content Include="react-app\public\favicon.ico" />
-    <Content Include="react-app\public\index.html" />
-    <Content Include="react-app\public\logo192.png" />
-    <Content Include="react-app\public\logo512.png" />
-    <Content Include="react-app\public\robots.txt" />
-    <Content Include="react-app\README.md" />
-    <Content Include="react-app\src\App.css" />
-    <Content Include="react-app\src\App.js" />
-    <Content Include="react-app\src\App.test.js" />
-    <Content Include="react-app\src\index.css" />
-    <Content Include="react-app\src\index.js" />
-    <Content Include="react-app\src\logo.svg" />
-    <Content Include="react-app\src\reportWebVitals.js" />
-    <Content Include="react-app\src\setupTests.js" />
+    <Compile Remove="react-app\**" />
+    <Compile Remove="wwwroot\static\**" />
+    <Content Remove="react-app\**" />
+    <Content Remove="wwwroot\static\**" />
+    <EmbeddedResource Remove="react-app\**" />
+    <EmbeddedResource Remove="wwwroot\static\**" />
+    <None Remove="react-app\**" />
+    <None Remove="wwwroot\static\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,20 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\favicon.ico" />
-    <None Include="wwwroot\index.html" />
-    <None Include="wwwroot\logo192.png" />
-    <None Include="wwwroot\logo512.png" />
-    <None Include="wwwroot\robots.txt" />
-    <None Include="wwwroot\static\css\main.e6c13ad2.css" />
-    <None Include="wwwroot\static\css\main.e6c13ad2.css.map" />
-    <None Include="wwwroot\static\js\main.376119f0.js" />
-    <None Include="wwwroot\static\js\main.376119f0.js.LICENSE.txt" />
-    <None Include="wwwroot\static\js\main.376119f0.js.map" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="react-app\build\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

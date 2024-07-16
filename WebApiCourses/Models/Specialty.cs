@@ -6,6 +6,7 @@ namespace WebApiCourses.Models
     {
         [Key]
         public int SpecialtyID { get; set; }
+        [Required]
         public string SpecialtyName { get; set; }
     }
 }

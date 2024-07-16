@@ -7,10 +7,23 @@ namespace WebApiCourses.Models
     {
         [Key]
         public int StudentsID { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Surname { get; set; }
-        public DateTime BirthDate { get; set; }
+        [Required]
+
+        public string Patronymic { get; set; }
+
+        [Required]
+        public DateTime Birthdate { get; set; }
+
+        [Required]
+        [Phone]
         public string Phone { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        [Required]
+        public int GroupID { get; set; }
     }
 }

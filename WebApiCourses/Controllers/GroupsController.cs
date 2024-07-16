@@ -1,18 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebApiCourses.Data;
 using WebApiCourses.Models;
 
-namespace WebApiCourses.Controllers
+namespace YourNamespace.Controllers
 {
-   
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class GroupsController : ControllerBase
     {
         private readonly WebApiCoursesContext _context;
@@ -22,18 +18,18 @@ namespace WebApiCourses.Controllers
             _context = context;
         }
 
-        // GET: Groups
+        // GET: api/Groups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Group>>> GetGroup()
+        public ActionResult<IEnumerable<Group>> GetGroups()
         {
-            return await _context.Group.ToListAsync();
+            return _context.Group.ToList();
         }
 
-        // GET: Groups/5
+        // GET: api/Groups/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Group>> GetGroup(int id)
+        public ActionResult<Group> GetGroup(int id)
         {
-            var group = await _context.Group.FindAsync(id);
+            var group = _context.Group.Find(id);
 
             if (group == null)
             {
@@ -43,5 +39,45 @@ namespace WebApiCourses.Controllers
             return group;
         }
 
+        // PUT: api/Groups/5
+        [HttpPut("{id}")]
+        public IActionResult PutGroup(int id, Group group)
+        {
+            if (id != group.GroupID)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(group).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
+        // POST: api/Groups
+        [HttpPost]
+        public ActionResult<Group> PostGroup(Group group)
+        {
+            _context.Group.Add(group);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetGroup", new { id = group.GroupID }, group);
+        }
+
+        // DELETE: api/Groups/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteGroup(int id)
+        {
+            var group = _context.Group.Find(id);
+            if (group == null)
+            {
+                return NotFound();
+            }
+
+            _context.Group.Remove(group);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
